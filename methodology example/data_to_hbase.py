@@ -24,7 +24,7 @@ def load_to_hbase (row):
                                         { "column" : base64.b64encode("Data:Weight"), "$" : base64.b64encode(str(row['Weight'])) },
                                         { "column" : base64.b64encode("Data:Comment"), "$" : base64.b64encode(str(row['Comment'])) },
                                         { "column" : base64.b64encode("Data:Synopsis"), "$" : base64.b64encode(str(row['Synopsis'])) },
-										{ "column" : base64.b64encode("Events:Event"), "$" : base64.b64encode(str(row['Event'])) }
+					{ "column" : base64.b64encode("Events:Event"), "$" : base64.b64encode(str(row['Event'])) }
                         ])
                 ])
 
