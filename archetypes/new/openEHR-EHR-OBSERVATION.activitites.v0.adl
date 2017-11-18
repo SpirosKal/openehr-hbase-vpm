@@ -1,0 +1,143 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.activitites.v0
+
+concept
+	[at0000]	-- Activitites
+language
+	original_language = <[ISO_639-1::el]>
+description
+	original_author = <
+		["name"] = <"Spyridon Kalogiannis">
+		["email"] = <"kalogianni@ceid.upatras.gr">
+	>
+	details = <
+		["el"] = <
+			language = <[ISO_639-1::el]>
+			purpose = <"To record the activities performed by an individual.">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"32A76CD3966B38E76A742B8437FBDBFA">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Activitites
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Duration
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"s">
+													>
+													["2"] = <
+														units = <"min">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0009] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Position
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- Standing/upright
+													at0013, 	-- Sitting
+													at0014]	-- Lying
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0007] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {	-- Device
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.sample_device(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["el"] = <
+			items = <
+				["at0000"] = <
+					text = <"Activitites">
+					description = <"Recorf details about activities performed by an individual.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Duration">
+					description = <"Record the duration of the activity performed">
+				>
+				["at0007"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Device">
+					description = <"Details about the device used for the recognition of the activities and the measurement of their duration.">
+				>
+				["at0009"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Position">
+					description = <"The body position of the subject during the observation.">
+				>
+				["at0012"] = <
+					text = <"Standing/upright">
+					description = <"The subject was standing, walking or running">
+				>
+				["at0013"] = <
+					text = <"Sitting">
+					description = <"The subject was sitting">
+				>
+				["at0014"] = <
+					text = <"Lying">
+					description = <"The subject was lying flat">
+				>
+			>
+		>
+	>
