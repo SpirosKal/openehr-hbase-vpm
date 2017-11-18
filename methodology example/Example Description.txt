@@ -1,0 +1,11 @@
+Example: 
+In this use-case scenario we suppose that only the fields "Weight","Comment" and "Any Event" from the "EHR-OBSERVATION.body_weight.v1" archetype and "Synopsis" from "EHR-EVALUATION.clinical_synopsis.v1" archetype are needed for the represenation of the required concepts.
+Hence, only these fields have to be represented by columns in the corresponding HBase table.
+
+We have to create an Hbase table with two column families ("Data" and "Events"), as the "Weight", "Comment" and "Synopsis" items are described by the "Data" label in the repsective archetypes, while "Any Event" is under the label "Events".
+
+HBase command: 
+create 'Tablename','Data','Events'
+
+
+The file "data_to_hbase.py" imports the data of this use-case scenario into an HBase table, as this produced by the decribed methodology.
