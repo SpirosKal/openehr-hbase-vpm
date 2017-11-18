@@ -19,7 +19,7 @@ description
 			copyright = <"">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
 		["MD5-CAM-1.0.1"] = <"32A76CD3966B38E76A742B8437FBDBFA">
